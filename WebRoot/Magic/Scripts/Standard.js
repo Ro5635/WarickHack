@@ -61,6 +61,31 @@ var main = function(){
         return false;
     }
 
+$('#createAccount').submit( function(){
+        var FormData = $(this).serialize();
+
+
+        $.post('http://api.arduinowebgui.com/api.php' ,FormData ,ProccessData);
+
+        //Now re-set the form
+        return false;
+
+
+    });
+
+    function ProccessData(){
+        //Prep the form for the next user:
+        $('#userName').value = "";
+        $('#password').value = "";
+        return false;
+    }
+
+
+
+
+
+
+
 
 }
 
