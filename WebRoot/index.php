@@ -1,6 +1,6 @@
 <?php
 $pageTitle = 'Home';
-$pageDescription = 'Submit mesages to the Cube';
+$pageDescription = 'Control your Arduino remotly';
 $InsertGoogleSpamCatch = 1;
 
 require_once('../Includes/StdHead.php');
