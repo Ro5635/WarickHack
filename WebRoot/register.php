@@ -67,18 +67,14 @@ include('../Includes/StdImage.php');
 						//Allow the user to create an account and upload an image to assosiate with the GUI:
 						?>
 						<form action="" method='post' enctype="multipart/form-data">
-							Upload image file here
-							<input type='file' name='file'/>
-							<br><br>
-							FileName: (Ensure Unique!!)<input type="text" name="fileName">
-							<br><br>
-							<input type='submit' value='Upload Image'/>
-
-							<?php echo $msg; 
-							if($outputMessages == 1){
-								echo "Image placed at: $s3file";
-								echo '<br><br>Image:<br><br>';
-								echo '<img src="' . cloudFrontCannedPolicyURLSign($s3file) . '">';
+							User name
+							<input type='text' name='userName'/>
+							<br>
+							Password
+							<input type='password' name='password'/>
+							<br>
+							Task
+							<input type = 'hidden' name = 'TASK' value = 1/>
 							}
 							?>
 						</form>
