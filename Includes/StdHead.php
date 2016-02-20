@@ -30,7 +30,7 @@ require_once('../EE1EPEDBC.php');
 		<nav class="PrimaryNav">
 			<ul>
 				<li><a href="index.php"><span class="NavLinkButton active">Home</span></a></li>
-				<li><a href="login.php"><span class="NavLinkButton">Log In</span></a></li>
+				<li><a href="/Secure/"><span class="NavLinkButton">Log In</span></a></li>
 				<li><a href="register.php"><span class="NavLinkButton">Register</span></a></li>
 			</ul>
 		</nav>
@@ -38,7 +38,7 @@ require_once('../EE1EPEDBC.php');
 		<nav class="MobileNav MobileOnly">
 			<ul>
 				<li><a href="index.php"><span class="NavLinkButton active">Home</span></a></li>
-				<li><a href="login.php"><span class="NavLinkButton">Log In</span></a></li>
+				<li><a href="/Secure/"><span class="NavLinkButton">Log In</span></a></li>
 				<li><a href="register.php"><span class="NavLinkButton">Register</span></a></li>
 			</ul>
 		</nav>
