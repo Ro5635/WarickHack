@@ -30,16 +30,16 @@ require_once('../EE1EPEDBC.php');
 		<nav class="PrimaryNav">
 			<ul>
 				<li><a href="index.php"><span class="NavLinkButton active">Home</span></a></li>
-				<li><a href="index.php"><span class="NavLinkButton">About</span></a></li>
-				<li><a href="index.php"><span class="NavLinkButton">Learn</span></a></li>
+				<li><a href="login.php"><span class="NavLinkButton">Log In</span></a></li>
+				<li><a href="register.php"><span class="NavLinkButton">Register</span></a></li>
 			</ul>
 		</nav>
 		<span class="MobileOnly" id="MobileHeader"><span id="HamburgerContainer" class="icon-menu"><img src=" <?php echo cloudFrontCannedPolicyURLSign('https://cdn.ro5635.co.uk/MediaSiteStructure/HamburgerMenuIcon.png') ?> "></span><span id="MobileTitle"><?php echo $pageTitle ?></span></span>
 		<nav class="MobileNav MobileOnly">
 			<ul>
 				<li><a href="index.php"><span class="NavLinkButton active">Home</span></a></li>
-				<li><a href="index.php"><span class="NavLinkButton">About</span></a></li>
-				<li><a href="index.php"><span class="NavLinkButton">Learn</span></a></li>
+				<li><a href="login.php"><span class="NavLinkButton">Log In</span></a></li>
+				<li><a href="register.php"><span class="NavLinkButton">Register</span></a></li>
 			</ul>
 		</nav>
 
