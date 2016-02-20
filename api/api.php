@@ -1,23 +1,28 @@
 <?php
+function CreateAccount($dbc, $UserName, $Password){
+	$stmt = $dbc->prepare('INSERT INTO Users(ComName, Password) VALUES(:UserName ,sha1(:UserPass))');
+    $stmt->execute(array(':UserName' => $UserName , ':UserPass'=>$pass ) );
+
+}
+
+
 //API Version 0.1
 
 if($_SERVER['REQUEST_METHOD'] == "POST")
 {
 	if($_POST['TASK'] == 1){
 		CreateAccount($dbc, $_POST['userName'], $_POST['password']);
+	} elseif ($_POST['TASK'] == 2) {
+		
 	}
 
 
-
-
-
-
-
-function CreateAccount($dbc, $UserName, $Password){
-	$stmt = $dbc->prepare('INSERT INTO Users(ComName, Password) VALUES(:UserName ,sha1(:UserPass))');
-    $stmt->execute(array(':UserName' => $UserName , ':UserPass' => $pass ) );
-
 }
+
+
+
+
+
 
 function UploadImage(){
 
@@ -66,4 +71,3 @@ function UploadImage(){
  }
 
 
-}

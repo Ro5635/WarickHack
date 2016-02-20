@@ -66,17 +66,16 @@ include('../Includes/StdImage.php');
 						<?php //echo '<span id="PageHeadImage"> <img src="' .  cloudFrontCannedPolicyURLSign('https://cdn.ro5635.co.uk/Cone.jpg') . '"></span>'; 
 						//Allow the user to create an account and upload an image to assosiate with the GUI:
 						?>
-						<form action="" method='post' enctype="multipart/form-data">
+						<form action="http://api.arduinowebgui.com/api.php" method='post' enctype="multipart/form-data">
 							User name
 							<input type='text' name='userName'/>
 							<br>
 							Password
 							<input type='password' name='password'/>
 							<br>
-							Task
-							<input type = 'hidden' name = 'TASK' value = 1/>
-							}
-							?>
+							<input type = 'hidden' name = "TASK" value = 1/>
+							<input type="submit" value="Submit">
+							
 						</form>
 
 						
