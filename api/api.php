@@ -5,6 +5,14 @@ function CreateAccount($dbc, $UserName, $Password){
 
 }
 
+function RegisternewDevice($dbc, $NewDeviceName){
+	$stmt = $dbc->prepare('INSERT INTO Devices(SimpleName , DeviceTocken) VALUES(:NewDeviceName , :Tocken)');
+	$tocken = bin2hex(openssl_random_pseudo_bytes(100));
+    $stmt->execute(array(':NewDeviceName' => $NewDeviceName, ':Tocken' => $tocken) );
+    $stmt->execute(array(':NewDeviceName' => $NewDeviceName) );
+    echo $tocken;
+}
+
 
 //API Version 0.1
 
@@ -13,9 +21,9 @@ if($_SERVER['REQUEST_METHOD'] == "POST")
 	if($_POST['TASK'] == 1){
 		CreateAccount($dbc, $_POST['userName'], $_POST['password']);
 	} elseif ($_POST['TASK'] == 2) {
-		
-	}
+		//Register an new device:
 
+	}
 
 }
 
