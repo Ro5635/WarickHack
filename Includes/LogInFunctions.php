@@ -91,14 +91,14 @@ function RemoveSessionEntirely(){
 function check_login($dbc, $username = '', $pass = '') {
   //PDO update makes string cleaning against SQL injection redundent.
 
-  $stmt = $dbc->prepare('SELECT UserID FROM Users  WHERE ComName=:CleanUserName and Password=sha1(:UserPass)');
+  $stmt = $dbc->prepare('SELECT UserID FROM Users  WHERE ComName=:CleanUserName and UserPasswordHashed=sha1(:UserPass)');
   $stmt->execute(array(':CleanUserName' => $username , ':UserPass' => $pass ) );
   $Data = $stmt->fetchAll(PDO::FETCH_ASSOC);
   $num_rows = count($Data);
 
   if($num_rows == 1){
-
-  return array("LoginState" => true,"Data" =>  $Data);
+  
+  return array("LoginState" => true,"Data" =>  $Data, 'ID' => $Data[0]['UserID']);
 
   } else{
   	//Login Failed.

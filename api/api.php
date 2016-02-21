@@ -1,16 +1,22 @@
 <?php
+require_once('/var/www/html/ArduinoWebGUI/EE1EPEDBC.php');
 function CreateAccount($dbc, $UserName, $Password){
-	$stmt = $dbc->prepare('INSERT INTO Users(ComName, Password) VALUES(:UserName ,sha1(:UserPass))');
-    $stmt->execute(array(':UserName' => $UserName , ':UserPass'=>$pass ) );
+	$stmt = $dbc->prepare('INSERT INTO Users(ComName, UserPasswordHashed) VALUES(:UserName ,sha1(:UserPass))');
+    $stmt->execute(array(':UserName' => $UserName , ':UserPass'=>$Password ) );
 
 }
 
 function RegisternewDevice($dbc, $NewDeviceName){
-	$stmt = $dbc->prepare('INSERT INTO Devices(SimpleName , DeviceTocken) VALUES(:NewDeviceName , :Tocken)');
-	$tocken = bin2hex(openssl_random_pseudo_bytes(100));
-    $stmt->execute(array(':NewDeviceName' => $NewDeviceName, ':Tocken' => $tocken) );
-    $stmt->execute(array(':NewDeviceName' => $NewDeviceName) );
-    echo $tocken;
+	if(isset($_SESSION['UserID'])){
+		$stmt = $dbc->prepare('INSERT INTO Devices(SimpleName , DeviceTocken, UserID) VALUES(:NewDeviceName , :Tocken, :UserID)');
+		$tocken = bin2hex(openssl_random_pseudo_bytes(100));
+    	$stmt->execute(array(':NewDeviceName' => $NewDeviceName, ':Tocken' => $tocken, ':UserID' => $_SESSION['UserID']) );
+    	echo $tocken;
+	}else{
+		//Big issue or user doing some thing weired.
+		error_log("The user is doing something unplesent, they dont have a session UserID");
+		die;
+	}
 }
 
 
@@ -19,9 +25,11 @@ function RegisternewDevice($dbc, $NewDeviceName){
 if($_SERVER['REQUEST_METHOD'] == "POST")
 {
 	if($_POST['TASK'] == 1){
+		//Create an Account:
 		CreateAccount($dbc, $_POST['userName'], $_POST['password']);
 	} elseif ($_POST['TASK'] == 2) {
 		//Register an new device:
+		RegisternewDevice($dbc, $_POST['simpleName']);
 
 	}
 

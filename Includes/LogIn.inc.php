@@ -30,7 +30,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 		$_SESSION['Status'] = "SiteAdminMode"; //Set status to alive
 		setcookie("SessUserID", $PsudoRandID, time()+3600); //Expire in one hour.
 		$_SESSION['UserName'] = $RawUserName;
-		$_SESSION['UserID'] = $data['id'];	
+		$_SESSION['UserID'] = $CheckLogin["ID"];	
 
 		//redirect
 		redirect_user('index.php');

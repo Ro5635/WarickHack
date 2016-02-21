@@ -1,4 +1,5 @@
 <?php
+require_once('../../EE1EPEDBC.php');
 //This generates the Secure signed S3 URLS:
 
 //The cloudfront key ID and location of the private cloudfront key is bellow in the 'get_canned_policy_stream_name' function, keep this updated.
@@ -33,6 +34,15 @@ function url_safe_base64_encode($value) {
         array('-', '_', '~'),
         $encoded);
  }
+
+ function CloudFrontImageSignedURLRequest($dbc, $ImageID){
+    //This gets the image from the database and gets the signed url from cloudFront.
+
+    //First get the full image location from the database:
+
+
+ }
+
 
 //The $expires, $key_pair_id and $private_key_filename has been replaced with a 2 mins and as above, this will do for this application. This has changed the signature.
 //PHP does not do method overloading so im leaving it like this. If your looking for a bug intergrating outher code this is

@@ -73,7 +73,7 @@ include('../Includes/StdImage.php');
 							Password
 							<input type='password' name='password'/>
 							<br>
-							<input type = 'hidden' name = "TASK" value = 1/>
+							<input type='hidden' name="TASK" value="1"/>
 							<input type="submit" value="Submit">
 							
 						</form>

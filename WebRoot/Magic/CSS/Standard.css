@@ -193,3 +193,17 @@ footer {
 	/*padding-top: 4%;*/
 	display: block;
 }
+.FormSecondStage{
+	display: none;
+}
+.FormPartOne {
+	display: inline-block;
+}
+.DeviceButton {
+	text-align: center;
+	width: 20%;
+	display: inline-block;
+	padding-bottom: 10%;
+	margin: 5%;
+	cursor: pointer;
+}
