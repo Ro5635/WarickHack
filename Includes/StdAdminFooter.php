@@ -1,5 +1,5 @@
 <footer>
-	<p>Copyright 2016 EE1EPE Team 2</p>
+	<p></p>
 </footer>
 
 
