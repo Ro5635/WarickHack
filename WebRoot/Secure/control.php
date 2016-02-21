@@ -4,6 +4,7 @@ $pageDescription = 'Control a remote Arduino';
 
 require_once('../../Includes/CheckLogIn.php');
 require_once('../../Includes/StdAdminHead.php');
+require_once('../../Includes/S3SignedURLGen.php');
 
 echo '<span Class="Page"><section>';
 
@@ -17,9 +18,9 @@ include('../../Includes/StdImage.php');
 
 						<?php
 						//include the new device register option:
-							
+							if( $_GET['DeviceID'] < 0 ||  is_null($_GET['DeviceID'])){
 							function GetDevicesForUserID($dbc, $UserID){
-								$stmt = $dbc->prepare('SELECT DeviceID, SimpleName, JoinDate FROM Devices Where UserID = :UserID');
+								$stmt = $dbc->prepare('SELECT DeviceID, SimpleName, JoinDate, ImageID FROM Devices Where UserID = :UserID');
   								$stmt->execute(array(':UserID' => $UserID ) );
   								$Data = $stmt->fetchAll(PDO::FETCH_ASSOC);	
   								return $Data;
@@ -28,9 +29,18 @@ include('../../Includes/StdImage.php');
 							$DataBaseData = GetDevicesForUserID($dbc, $_SESSION['UserID']);
 
 							foreach ($DataBaseData as $key => $SingleDevice) {
-								echo '<span id="' . $SingleDevice['DeviceID'] . '" class="DeviceButton">' . $SingleDevice['SimpleName'] . '<br> Created: ' . $SingleDevice['JoinDate'] . '</span>';
+								echo '<span style="background: url(' .  CloudFrontImageSignedURLRequest($dbc,$SingleDevice['ImageID']) . ')" id="' . $SingleDevice['DeviceID'] . '" class="DeviceButton">' . $SingleDevice['SimpleName'] . '<br> Created: ' . $SingleDevice['JoinDate'] . '</span>';
 							}
-
+							
+						}else{
+							
+							function GUIsAvalibleForADevice($DeviceID){
+								//This prints out a GUI button for each of the avaible GUIs for this project:
+								$stmt = $dbc->prepare('SELECT SimpleName, UserID');
+  								$stmt->execute(array(':UserID' => $UserID ) );
+  								$Data = $stmt->fetchAll(PDO::FETCH_ASSOC);	
+							}
+						}
 						?>
 
 

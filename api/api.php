@@ -11,6 +11,8 @@ function RegisternewDevice($dbc, $NewDeviceName){
 		$stmt = $dbc->prepare('INSERT INTO Devices(SimpleName , DeviceTocken, UserID) VALUES(:NewDeviceName , :Tocken, :UserID)');
 		$tocken = bin2hex(openssl_random_pseudo_bytes(100));
     	$stmt->execute(array(':NewDeviceName' => $NewDeviceName, ':Tocken' => $tocken, ':UserID' => $_SESSION['UserID']) );
+    	$_SESSION['RegisternewDeviceID'] = $dbc->lastInsertId();
+    	error_log($_SESSION['RegisternewDeviceID']);
     	echo $tocken;
 	}else{
 		//Big issue or user doing some thing weired.

@@ -1,6 +1,6 @@
 <?php
 // Bucket Name
-$bucket="uniprojects/EE1EPE/Media/";
+$bucket="uniprojects/WarwickHack/";
 if (!class_exists('S3'))require_once('S3.php');
 
 //AWS access info

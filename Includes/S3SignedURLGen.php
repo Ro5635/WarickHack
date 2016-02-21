@@ -1,5 +1,5 @@
 <?php
-require_once('../../EE1EPEDBC.php');
+require_once('/var/www/html/ArduinoWebGUI/EE1EPEDBC.php');
 //This generates the Secure signed S3 URLS:
 
 //The cloudfront key ID and location of the private cloudfront key is bellow in the 'get_canned_policy_stream_name' function, keep this updated.
@@ -40,6 +40,12 @@ function url_safe_base64_encode($value) {
 
     //First get the full image location from the database:
 
+    //THIS IS A CRONIC MEHTORD FOR QUREYING THE DATABASE BUT, OVERWHELMING TIME PRESSURE AND TIREDNESS...
+    $stmt = $dbc->prepare(' SELECT ImageName, ImageAltText FROM ImageBank  Where ImageBank.ImageID = :GivenImageID ');
+    $stmt->execute(array(':GivenImageID' => $ImageID ) );
+    $Data = $stmt->fetchAll(PDO::FETCH_ASSOC);  
+
+    return cloudFrontCannedPolicyURLSign('https://cdn.arduinowebgui.com/WarwickHack/' . $_SESSION['UserID']  . '/' . $Data[0]['ImageName'] );
 
  }
 

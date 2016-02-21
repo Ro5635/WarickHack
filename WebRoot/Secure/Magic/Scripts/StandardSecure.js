@@ -65,6 +65,25 @@ $('.PrimaryNav ul li').hover(
         return false;
     }
 
+   $('.DeviceButton').mouseover(function(){
+      $(this).addClass('hover');
+   });
+
+   $('.DeviceButton').mouseout(function(){
+      $(this).removeClass('hover');
+   });
+
+   $('.DeviceButton').click(function(){
+        url = '?DeviceID=';
+        id = $(this).attr('id')
+        url2 = url.concat(id);
+        window.location.replace(url2);
+       
+
+
+   });
+
+
 
 
 

@@ -206,4 +206,15 @@ footer {
 	padding-bottom: 10%;
 	margin: 5%;
 	cursor: pointer;
+	border-radius: 5px;
+  -moz-border-radius: 5px;
+  -webkit-border-radius: 5px; 
+}
+
+.hover {
+	  cursor: pointer;
+  border-radius: 5px;
+  -moz-border-radius: 5px;
+  -webkit-border-radius: 5px; 
+  box-shadow: 5 5;
 }

@@ -3,6 +3,7 @@ $pageTitle = 'Settings';
 $pageDescription = 'Edit User Settings';
 
 require_once('../../Includes/CheckLogIn.php');
+require_once('ImageUploadPOSTFormHandle.php');
 require_once('../../Includes/StdAdminHead.php');
 
 echo '<span Class="Page"><section>';
